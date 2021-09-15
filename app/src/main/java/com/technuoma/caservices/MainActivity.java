@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         bottomNavigationView.setOnNavigationItemSelectedListener(MainActivity.this);
         bottomNavigationView.setSelectedItemId(R.id.home);
 
-       // Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
+        // Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
 
         drawerLayout = findViewById(R.id.my_drawer_layout);
 

@@ -9,6 +9,8 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -45,6 +47,8 @@ public class Home extends Fragment {
     Category3Adapter adapter4;
     ArrayList<Category3> cat3_list;
 
+    MainActivity mainActivity;
+
     public Home() {
 
     }
@@ -53,6 +57,8 @@ public class Home extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        mainActivity = (MainActivity) getActivity();
 
         SliderView sliderView = view.findViewById(R.id.slider);
 
@@ -171,8 +177,13 @@ public class Home extends Fragment {
                 @Override
                 public void onClick(View view) {
 
-                    Intent intent = new Intent(getActivity(),ImageUploadActivity.class);
-                    startActivity(intent);
+                    FragmentManager fm3 = getActivity().getSupportFragmentManager();
+                    FragmentTransaction ft3 = fm3.beginTransaction();
+                    ft3.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                    Category1Fragment frag13 = new Category1Fragment();
+                    ft3.replace(R.id.flFragment, frag13);
+                    ft3.addToBackStack(null);
+                    ft3.commit();
 
 
                 }
@@ -232,29 +243,20 @@ public class Home extends Fragment {
 
             holder.name.setText(item.getName());
 
-           /* holder.itemView.setOnClickListener(new View.OnClickListener() {
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 
                     FragmentManager fm4 = mainActivity.getSupportFragmentManager();
-
-                    for (int i = 0; i < fm4.getBackStackEntryCount(); ++i) {
-                        fm4.popBackStack();
-                    }
-
                     FragmentTransaction ft4 = fm4.beginTransaction();
-                    productList frag14 = new productList();
-                    Bundle b = new Bundle();
-                    b.putString("id", item.getId());
-                    frag14.setArguments(b);
-                    ft4.replace(R.id.replace, frag14);
+                    Category2Fragment frag14 = new Category2Fragment();
+                    ft4.replace(R.id.flFragment, frag14);
                     ft4.addToBackStack(null);
-                    //ft.addToBackStack(null);
                     ft4.commit();
 
 
                 }
-            });*/
+            });
 
         }
 
@@ -310,30 +312,21 @@ public class Home extends Fragment {
 
             holder.name.setText(item.getName());
 
-           /* holder.itemView.setOnClickListener(new View.OnClickListener() {
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 
                     FragmentManager fm4 = mainActivity.getSupportFragmentManager();
 
-                    for (int i = 0; i < fm4.getBackStackEntryCount(); ++i) {
-                        fm4.popBackStack();
-                    }
-
                     FragmentTransaction ft4 = fm4.beginTransaction();
-                    productList frag14 = new productList();
-                    Bundle b = new Bundle();
-                    b.putString("id", item.getId());
-                    frag14.setArguments(b);
-                    ft4.replace(R.id.replace, frag14);
+                    Category3Fragment frag14 = new Category3Fragment();
+                    ft4.replace(R.id.flFragment, frag14);
                     ft4.addToBackStack(null);
-                    //ft.addToBackStack(null);
                     ft4.commit();
 
 
                 }
-            });*/
-
+            });
         }
 
         @Override
@@ -388,29 +381,16 @@ public class Home extends Fragment {
 
             holder.name.setText(item.getName());
 
-           /* holder.itemView.setOnClickListener(new View.OnClickListener() {
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 
-                    FragmentManager fm4 = mainActivity.getSupportFragmentManager();
-
-                    for (int i = 0; i < fm4.getBackStackEntryCount(); ++i) {
-                        fm4.popBackStack();
-                    }
-
-                    FragmentTransaction ft4 = fm4.beginTransaction();
-                    productList frag14 = new productList();
-                    Bundle b = new Bundle();
-                    b.putString("id", item.getId());
-                    frag14.setArguments(b);
-                    ft4.replace(R.id.replace, frag14);
-                    ft4.addToBackStack(null);
-                    //ft.addToBackStack(null);
-                    ft4.commit();
+                    Intent intent = new Intent(getActivity(), ImageUploadActivity.class);
+                    startActivity(intent);
 
 
                 }
-            });*/
+            });
 
         }
 
